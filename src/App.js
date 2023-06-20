@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import Songlist from "./Components/Songlist/Songlist"
+import AddSongList from './AddSongList';
+import Songlist from './Components/Songlist/Songlist';
 import './App.css';
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
     <div>
       <h1>Music List</h1>
 <Songlist/>
+<AddSongList/>
     </div>
   );
 }

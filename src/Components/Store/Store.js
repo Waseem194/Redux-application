@@ -1,10 +1,12 @@
-import React from 'react';
+
 import { createStore, combineReducers } from 'redux';
 
 
 
 const initialState = {
-    songs: [],
+    songs: [
+    
+    ],
 };
 
 const playlistReducer = (state = initialState, action) => {
