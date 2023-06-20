@@ -4,9 +4,7 @@ import { createStore, combineReducers } from 'redux';
 
 
 const initialState = {
-    songs: [
-    
-    ],
+    songs: [],
 };
 
 const playlistReducer = (state = initialState, action) => {
@@ -27,7 +25,7 @@ const playlistReducer = (state = initialState, action) => {
 };
 
 let data = combineReducers({ playlistReducer });
-export  let myStore = createStore(data);
+export let myStore = createStore(data);
 
 
 

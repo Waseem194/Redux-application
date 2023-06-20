@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { deleteSong } from "../Action/Action";
-
+import { Table, Container, Col, Row } from 'react-bootstrap';
 const Songlist = () => {
   const playlist = useSelector((state) => state.playlistReducer.songs);
   const dispatch = useDispatch();
@@ -12,30 +12,34 @@ const Songlist = () => {
 
   return (
     <div>
-      <table>
-        <tbody>
-          {playlist.map((songList, index) => {
-            return (
-              <Fragment>
-                <tr key={index}>
-                  <th>Song Name:</th>
-                </tr>
+      <Container fluid="md" >
+        <Row>
+          <Col md={3}>
+            <Table striped bordered hover>
+              <thead>
                 <tr>
-                  <td>{songList.song}</td>
+                  <th>Song Name</th>
+                  <th>Singer Name</th>
+                  <th>id</th>
                 </tr>
-                <tr>
-                  <th>Singer Name:</th>
-                </tr>
-                <tr>
-                  <td>{songList.singer}</td>
-                </tr>
-                <th>id:</th>
-                <tr>{songList.id}</tr>
-              </Fragment>
-            );
-          })}
-        </tbody>
-      </table>
+              </thead>
+              <tbody>
+                {playlist.map((songList, index) => {
+                  return (
+                    <Fragment>
+                      <tr key={index}>
+                        <td>{songList.song}</td>
+                        <td>{songList.singer}</td>
+                        <td>{songList.id}</td>
+                      </tr>
+                    </Fragment>
+                  );
+                })}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

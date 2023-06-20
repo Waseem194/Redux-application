@@ -7,8 +7,8 @@ import './App.css';
 function App() {
   return (
     <div>
-      <h1>Music List</h1>
-<Songlist/>
+    
+{/* <Songlist/> */}
 <AddSongList/>
     </div>
   );
