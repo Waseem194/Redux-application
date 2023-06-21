@@ -1,17 +1,11 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import AddSongList from './AddSongList';
-import Songlist from './Components/Songlist/Songlist';
-import './App.css';
+import React from "react";
+import SongPage from "./Components/songPage";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 function App() {
-  return (
-    <div>
-    
-{/* <Songlist/> */}
-<AddSongList/>
-    </div>
-  );
+  return <SongPage />;
 }
 
 export default App;
