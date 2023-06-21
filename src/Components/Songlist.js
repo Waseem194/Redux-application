@@ -47,7 +47,6 @@ const Songlist = (listData) => {
                 {playlist.map((songList, index) => {
                   return (
                     <Fragment key={index}>
-                      <CustomTableRow />
                       <tr>
                         <td>{songList.id}</td>
                         <td>
