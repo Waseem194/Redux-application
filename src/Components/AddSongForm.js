@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { Table, Form, Container, Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
-import { addSong, deleteSong } from "./Action/Action";
+import { addSong, deleteSong } from "./Action";
 const AddSongForm = () => {
   const playlist = useSelector((state) => state.playlistReducer.songs);
 
