@@ -1,7 +1,8 @@
 import { createStore, combineReducers } from "redux";
+import data from "../data.json";
 
 const initialState = {
-  songs: [],
+  songs: data,
 };
 
 const playlistReducer = (state = initialState, action) => {
@@ -33,5 +34,5 @@ const playlistReducer = (state = initialState, action) => {
   }
 };
 
-let data = combineReducers({ playlistReducer });
-export let myStore = createStore(data);
+let reducers = combineReducers({ playlistReducer });
+export let myStore = createStore(reducers);

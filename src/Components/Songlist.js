@@ -1,11 +1,52 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import "./songList.css";
 import UpdateSong from "./UpdateSong";
-
+import { Table, Container, Col, Row } from "react-bootstrap";
 const Songlist = () => {
- 
+  const [sortType, setSortType] = useState("");
+  let playlist = useSelector((state) => state.playlistReducer.songs);
+  playlist.sort((a, b) => {
+    if (sortType === "") return 0;
+    if (!a[sortType]) return 0;
+    const nameA = a[sortType].toUpperCase();
+    const nameB = b[sortType].toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+
+    return 0;
+  });
+
   return (
     <div>
-      <UpdateSong/>
+      <h1>Music List</h1>
+      <Container>
+        <Row>
+          <Col>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th onClick={() => setSortType("id")}>Sr#</th>
+                  <th onClick={() => setSortType("singer")}>Singer Name</th>
+                  <th onClick={() => setSortType("song")}>Song Name</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {playlist.map((songList, index) => {
+                  return (
+                    <UpdateSong songList={songList} key={index} index={index} />
+                  );
+                })}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
