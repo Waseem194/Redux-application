@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteSong, editSong } from "./Action";
 import { Button } from "react-bootstrap";
 const UpdateSong = ({ songList, index }) => {
   const [editing, setEditing] = useState(false);
   const [songData, setSongData] = useState();
   const [singerData, setSingerData] = useState();
-  const [sortedData, setSortedData] = useState();
+
   const dispatch = useDispatch();
   const handleRemoveSong = (listData) => {
     dispatch(deleteSong(listData));

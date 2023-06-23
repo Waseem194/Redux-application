@@ -1,8 +1,11 @@
-import React, { Fragment, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./songList.css";
 import UpdateSong from "./UpdateSong";
-import { Table, Container, Col, Row } from "react-bootstrap";
+import Researchbar from "./Researchbar";
+import { Table, Container, Col, Row} from "react-bootstrap";
+
+
 const Songlist = () => {
   const [sortType, setSortType] = useState("");
   let playlist = useSelector((state) => state.playlistReducer.songs);
@@ -24,7 +27,15 @@ const Songlist = () => {
   return (
     <div>
       <h1>Music List</h1>
-      <Container>
+      <Container className="search">
+        <Row>
+          <Col md={6}>
+            <Researchbar/>
+          </Col>
+        </Row>
+      </Container>
+
+      <Container >
         <Row>
           <Col>
             <Table striped bordered hover>

@@ -1,3 +1,10 @@
 Table tr th{
     cursor: pointer;
 }
+.search{
+    margin: 0.5em;
+}
+
+Table tr th:hover{
+    background-color: green;
+}
