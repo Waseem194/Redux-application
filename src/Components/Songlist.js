@@ -3,11 +3,12 @@ import { useSelector } from "react-redux";
 import "./songList.css";
 import UpdateSong from "./UpdateSong";
 import Researchbar from "./Researchbar";
-import { Table, Container, Col, Row} from "react-bootstrap";
-
+import { Table, Container, Col, Row } from "react-bootstrap";
 
 const Songlist = () => {
   const [sortType, setSortType] = useState("");
+  const [search, setSearch] = useState();
+
   let playlist = useSelector((state) => state.playlistReducer.songs);
   playlist.sort((a, b) => {
     if (sortType === "") return 0;
@@ -23,19 +24,39 @@ const Songlist = () => {
 
     return 0;
   });
+  const handleSearch = (searchTerm) => {
+    setSearch(searchTerm);
+  };
+  const filterList = playlist.filter((item) => {
+    if (search === undefined) {
+      return true;
+    }
+    const upperCaseSearch = search.toUpperCase();
+    if (
+      search !== "" &&
+      (item.song.toUpperCase().includes(upperCaseSearch) ||
+        item.singer.toUpperCase().includes(upperCaseSearch))
+    ) {
+      return true;
+    }
 
+    return false;
+  });
+  console.log(filterList);
+  console.log(search);
+  console.log(playlist);
   return (
     <div>
       <h1>Music List</h1>
       <Container className="search">
         <Row>
           <Col md={6}>
-            <Researchbar/>
+            <Researchbar onSearch={handleSearch} />
           </Col>
         </Row>
       </Container>
 
-      <Container >
+      <Container>
         <Row>
           <Col>
             <Table striped bordered hover>
@@ -48,7 +69,7 @@ const Songlist = () => {
                 </tr>
               </thead>
               <tbody>
-                {playlist.map((songList, index) => {
+                {filterList.map((songList, index) => {
                   return (
                     <UpdateSong songList={songList} key={index} index={index} />
                   );

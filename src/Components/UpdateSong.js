@@ -62,7 +62,7 @@ const UpdateSong = ({ songList, index }) => {
                 onClick={() => updateEditing(songList.id)}
               >
                 Update
-              </Button>
+              </Button>{" "}
               <Button
                 onClick={() => handleCancel(songList)}
                 variant="secondary"
@@ -74,7 +74,7 @@ const UpdateSong = ({ songList, index }) => {
             <Fragment>
               <Button variant="primary" onClick={() => toggleEditing(songList)}>
                 Edit
-              </Button>
+              </Button>{" "}
               <Button
                 onClick={() => handleRemoveSong(songList.id)}
                 variant="secondary"

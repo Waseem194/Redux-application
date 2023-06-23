@@ -1,22 +1,16 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 
-const Researchbar = () => {
+const Researchbar = ({ onSearch }) => {
   const [research, setResearch] = useState("");
   const [validate, setValidate] = useState(false);
   const researchSubmit = (event) => {
     const form = event.currentTarget;
     event.preventDefault();
     form.checkValidity();
-    resetForm('');
-    console.log(researchSubmit)
+    onSearch(research);
   };
-
-  const resetForm = () => {
-    setResearch("");
-    
-  };
-  
+ 
   return (
     <div>
       <Form
@@ -33,7 +27,7 @@ const Researchbar = () => {
           aria-label="Search"
           onChange={(event) => setResearch(event.target.value)}
         />
-        <Button variant="outline-success d-flex">Search</Button>
+        <Button variant="outline-success d-flex" type="submit">Search</Button>
       </Form>
     </div>
   );
